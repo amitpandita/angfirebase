@@ -1,0 +1,75 @@
+<!doctype html>
+<html ng-app="angfire">
+  <head>
+    <title>Angfire </title>
+
+
+    <!-- AngularJS -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.7/angular.min.js"></script>
+    <script src="http://angular-ui.github.io/bootstrap/ui-bootstrap-tpls-0.10.0.js"></script>
+    <!-- Firebase -->
+    <script src="https://cdn.firebase.com/v0/firebase.js"></script>
+    <!-- Firebase Auth -->
+    <script type="text/javascript" src="https://cdn.firebase.com/v0/firebase-simple-login.js"></script>
+    <!-- AngularFire Plugin -->
+    <script src="https://cdn.firebase.com/libs/angularfire/0.5.0/angularfire.min.js"></script>
+    <script src="app.js"></script>
+    <link rel="stylesheet" type="text/css" href="main.css">
+    <!-- Bootstrap -->
+    <link rel="stylesheet" type="text/css" href="bootstrap.min.css">
+    
+  </head>
+
+
+
+  <body ng-controller="Angfire">
+    <!--DIalog Box code -->
+    <script type="text/ng-template" id="myModalContent.html">
+          <div class="modal-body">
+            <a  href="#" ng-click="angfireLogin('facebook')"> <img class="fb-image" src="fblogin.png" /> </a>    
+            
+            </div>
+        <div class="modal-footer">
+            <!-- <button class="btn btn-primary" ng-click="ok()">OK</button> -->
+            <button class="btn btn-warning" ng-click="cancel()">Skip</button>
+        </div>
+    </script>
+
+    <!-- Dialog Box code ends -->
+
+    <nav class="navbar navbar-default" role="navigation">
+    <!--<a  href="#" ng-click="angfireLogin('facebook')">Facebook</a> -->
+    <a  href="#" ng-click="angfireLogout('facebook')">Logout</a>
+
+    <p class="navbar-text navbar-right">Welcome  <a ng-href="{{user.link}}" target="_blank" class="navbar-link">{{user.name}}</a></p>
+
+    </nav>
+    <iframe width="640" height="360" src="//www.youtube.com/embed/NgpcwYooLO0?feature=player_detailpage" frameborder="0" allowfullscreen></iframe>
+
+    
+    <div><b>Please Enter your comments below: </b><div>
+
+    <div id="textarea">
+          <textarea ng-model="newComment" ng-keydown="addComment($event)">
+            
+          </textarea>
+
+    </div>
+    <div id="comments" ng-repeat="comment in comments">
+       
+       <div>
+         <img src="https://graph.facebook.com/{{user.id}}/picture?type=small">  
+         <span><b>{{user.name}}:</b> <br/>  {{comment.body}}
+         </span>
+       </div>
+
+    </div>
+    
+
+
+    <!-- <div>
+      <input type="text" ng-model="yourName" placeholder="Enter a name here">
+      <h1>Hello, {{ yourName }}!</h1>
+    </div> -->
+  </body>
+</html>

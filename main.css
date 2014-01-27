@@ -1,0 +1,31 @@
+.logo-img{
+  width: 50%!important;
+  height: 50% !important;
+  display: block;
+  margin-left: auto;
+  margin-right: auto
+}
+
+.comments{
+  margin-left: auto;
+  margin-right: auto;
+  width: 6em
+}
+
+.textWrap{
+  margin-left: auto;
+  margin-right: auto;
+  width: 6em
+}
+
+.modal-body{
+ width: 180px;
+ height: 180px;
+
+}
+
+.fb-image{
+ width: 180px;
+ height: 120px;  
+
+}
