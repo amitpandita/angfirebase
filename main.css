@@ -29,3 +29,58 @@
  height: 120px;  
 
 }
+
+.comment-outer{
+ padding-left: 15px;
+
+}
+
+ .setting-top{
+  float: right;
+ }
+ .setting-top a {
+  display: block;
+  padding: 14px;
+ }
+ .logo {
+  float: left;
+  font-size: 20px;
+  margin: 10px;
+  color: #777;
+  font-family: cursive;
+  font-weight: bold;
+ }
+ .logo span {
+  color: #428bca;
+ }
+.user-name {
+  float: right;
+  height: 48px;
+  padding: 14px 10px;
+  border-right: 1px solid #CCC;
+  border-left: 1px solid #CCC;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@media(max-width:767px){
+  .user-name {
+    display: none;
+  }
+}
+@media(min-width:768px){}
+@media(min-width:992px){}
+@media(min-width:1200px){}

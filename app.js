@@ -1,27 +1,33 @@
 angular.module("angfire", ["firebase","ui.bootstrap"]).controller(
   "Angfire",["$rootScope","$scope","$firebase", "$modal","$log" ,function($rootScope,$scope, $firebase,$modal, $log)  {
       var ref= new Firebase("https://angfirebase.firebaseio.com/");
+       $rootScope.fl = 0;
        $rootScope.authClient = new FirebaseSimpleLogin(ref, function(error, user) {
         if (error) {
          console.log(error);
         return;
            }
         if (user) {
+          $rootScope.fl = 1;
         console.log(user + " is logged in.");
         console.log(user);
-        $scope.user = user;
-         } else {
+        $rootScope.user = user;
 
-        console.log("user is loged out.");
-        $scope.open();
-         }
+         } else {
+          console.log("user is loged out.");
+          console.log($rootScope.fl);
+          if($rootScope.fl==0){
+            $scope.open();
+          }
+          
+          }
         });
       // $scope.angfireLogin = function(lgin){
       //   authClient.login(lgin);
       // };
       
       $scope.angfireLogout = function(lgout){
-
+        $rootScope.fl = 2;
         $rootScope.authClient.logout();
       }
       $scope.comments= $firebase(ref);
@@ -31,12 +37,15 @@ angular.module("angfire", ["firebase","ui.bootstrap"]).controller(
       $scope.addComment = function(e){
         if (e.keyCode != 13) return;
         $scope.comments.$add({
-           from: $scope.username,
-           body: $scope.newComment 
+           from: $rootScope.user.name,
+           body: $scope.newComment,
+           fid: $rootScope.user.id
       });
       $scope.newComment= "";  
+      console.log("Comments by the user" + $rootScope.user.name);
      }
      
+   
     $scope.open = function () {
     var modalInstance = $modal.open({
       templateUrl: 'myModalContent.html',

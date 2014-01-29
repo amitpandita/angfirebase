@@ -6,7 +6,9 @@
 
     <!-- AngularJS -->
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.7/angular.min.js"></script>
-    <script src="http://angular-ui.github.io/bootstrap/ui-bootstrap-tpls-0.10.0.js"></script>
+    <script src="ui-bootstrap-tpls-0.10.0.js"></script>
+    <!--Jquery -->
+    <script type="text/javascript" src="jquery-1.11.0.min.js"></script>
     <!-- Firebase -->
     <script src="https://cdn.firebase.com/v0/firebase.js"></script>
     <!-- Firebase Auth -->
@@ -14,16 +16,20 @@
     <!-- AngularFire Plugin -->
     <script src="https://cdn.firebase.com/libs/angularfire/0.5.0/angularfire.min.js"></script>
     <script src="app.js"></script>
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+
     <link rel="stylesheet" type="text/css" href="main.css">
     <!-- Bootstrap -->
     <link rel="stylesheet" type="text/css" href="bootstrap.min.css">
+    <!-- Glyphicons -->
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css" rel="stylesheet">
     
   </head>
 
 
 
   <body ng-controller="Angfire">
-    <!--DIalog Box code -->
+    <!--************Dialog Box code******************* -->
     <script type="text/ng-template" id="myModalContent.html">
           <div class="modal-body">
             <a  href="#" ng-click="angfireLogin('facebook')"> <img class="fb-image" src="fblogin.png" /> </a>    
@@ -35,41 +41,54 @@
         </div>
     </script>
 
-    <!-- Dialog Box code ends -->
+    <!--************** Dialog Box code ends***************** -->
+
+
+    <header class="navbar navbar-inverse navbar-fixed-top bs-docs-nav" >
+
 
     <nav class="navbar navbar-default" role="navigation">
-    <!--<a  href="#" ng-click="angfireLogin('facebook')">Facebook</a> -->
-    <a  href="#" ng-click="angfireLogout('facebook')">Logout</a>
-
-    <p class="navbar-text navbar-right">Welcome  <a ng-href="{{user.link}}" target="_blank" class="navbar-link">{{user.name}}</a></p>
-
+      <div class="logo">
+        <span class="glyphicon glyphicon-tower"></span>
+        ROOK
+      </div>
+      <div class="dropdown setting-top">
+        <a data-toggle="dropdown" href="#"><span class="glyphicon glyphicon-cog"></span></a>
+        <ul class="dropdown-menu pull-right" role="menu">
+          <li><a href="#">My Videos</a></li>
+          <li><a href="#">Settings</a></li>
+          <li role="presentation" class="divider"></li>
+          <li><a href="#" ng-click="angfireLogout('facebook')">Logout</a></li>
+        </ul>
+      </div>
+      <div class="user-name" ng-bind="user.name"></div>
     </nav>
-    <iframe width="640" height="360" src="//www.youtube.com/embed/NgpcwYooLO0?feature=player_detailpage" frameborder="0" allowfullscreen></iframe>
+    </header>
+    <section>
+         <iframe width="640" height="360" src="//www.youtube.com/embed/NgpcwYooLO0?feature=player_detailpage" frameborder="0" allowfullscreen></iframe>
 
     
-    <div><b>Please Enter your comments below: </b><div>
+         <div><b>Please Enter your comments below: </b><div>
 
-    <div id="textarea">
-          <textarea ng-model="newComment" ng-keydown="addComment($event)">
+         <div id="textarea">
+             <textarea  ng-disabled="fl!=1" ng-model="newComment" ng-keydown="addComment($event)">
             
-          </textarea>
+             </textarea>
 
-    </div>
-    <div id="comments" ng-repeat="comment in comments">
+         </div>
+         <div><br/>
+         </div>
+
+    <div id="comments" ng-repeat="comment in comments" class="comment-outer">
        
-       <div>
-         <img src="https://graph.facebook.com/{{user.id}}/picture?type=small">  
-         <span><b>{{user.name}}:</b> <br/>  {{comment.body}}
+       <div class="span6">
+         <img src="https://graph.facebook.com/{{comment.fid}}/picture?type=small">  
+         <span><b>{{comment.from}}:</b> <br/>  {{comment.body}}
          </span>
        </div>
 
     </div>
-    
+    </section>
 
-
-    <!-- <div>
-      <input type="text" ng-model="yourName" placeholder="Enter a name here">
-      <h1>Hello, {{ yourName }}!</h1>
-    </div> -->
   </body>
 </html>
