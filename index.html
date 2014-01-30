@@ -45,12 +45,9 @@
 
 
     <header class="navbar navbar-inverse navbar-fixed-top bs-docs-nav" >
-
-
-    <nav class="navbar navbar-default" role="navigation">
       <div class="logo">
         <span class="glyphicon glyphicon-tower"></span>
-        ROOK
+        KORO
       </div>
       <div class="dropdown setting-top">
         <a data-toggle="dropdown" href="#"><span class="glyphicon glyphicon-cog"></span></a>
@@ -62,33 +59,79 @@
         </ul>
       </div>
       <div class="user-name" ng-bind="user.name"></div>
-    </nav>
     </header>
     <section>
-         <iframe width="640" height="360" src="//www.youtube.com/embed/NgpcwYooLO0?feature=player_detailpage" frameborder="0" allowfullscreen></iframe>
+      <div class="container">
+        <div class="row">
+          <div class="main-content">
+            <!-- start: video header -->
+            <div class="row">
+              <div class="col-sm-12 video-head">
+                <h2 class="video-name">XYZ Video</h2>
+                <div class="rating">
+                  <div class="up"><span class="glyphicon glyphicon-thumbs-up"></span>30</div>
+                  <div class="down"><span class="glyphicon glyphicon-thumbs-down"></span>12</div>
+                </div>
+                <div class="user-info">
+                  <p>Amit Pandita</p>
+                  <p>New Delhi</p>
+                </div>
+                <div class="user-avatar">
+                  <img src="https://graph.facebook.com/100000561901666/picture?type=small" class="img-circle">
+                </div>
+              </div>
+            </div>
+            <!-- end: video header -->
+            <!-- start: video body -->
+            <div class="row">
+              <div class="col-sm-12">
+                <div class="play-video">
+                  <iframe width="320" height="180" src="//www.youtube.com/embed/NgpcwYooLO0?feature=player_detailpage" frameborder="0" allowfullscreen></iframe>
+                </div>
+                <div class="comment-video">
+                  <p>Please enter your comments below:</p>
+                  <textarea  ng-disabled="fl!=1" ng-model="newComment" ng-keydown="addComment($event)"></textarea>
+                  <div class="video-option">
+                    <div class="up"><span class="glyphicon glyphicon-thumbs-up"></span></div>
+                    <div class="down"><span class="glyphicon glyphicon-thumbs-down"></span></div>
+                    <div class="button">
+                      <button class="btn btn-info">Submit</button>
+                      <button class="btn btn-default">Cancel</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- end: video body -->
+            <!-- start: video comments -->
+            <div class="row">
+              <div class="col-sm-12">
+                <div class="comments" ng-repeat="comment in comments | filter: filter | orderBy:sort:reverse " class="comment-outer">
+                  <div class="user-img">
+                    <img src="https://graph.facebook.com/{{comment.fid}}/picture?type=small"/>
+                  </div>
+                  <div class="user-comment">
+                    <div class="comment-from">{{comment.from}}</div>
+                    <div class="comment-body">{{comment.body}}</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- end: video comments -->
+          </div>
+          <!-- start: video side bar -->
+          <div class="side-content">
 
-    
-         <div><b>Please Enter your comments below: </b><div>
-
-         <div id="textarea">
-             <textarea  ng-disabled="fl!=1" ng-model="newComment" ng-keydown="addComment($event)">
-            
-             </textarea>
-
-         </div>
-         <div><br/>
-         </div>
-
-    <div id="comments" ng-repeat="comment in comments" class="comment-outer">
-       
-       <div class="span6">
-         <img src="https://graph.facebook.com/{{comment.fid}}/picture?type=small">  
-         <span><b>{{comment.from}}:</b> <br/>  {{comment.body}}
-         </span>
-       </div>
-
-    </div>
+          </div>
+          <!-- end: video side bar -->
+        </div>
+      </div>
     </section>
-
+    <footer>
+      <p class="footer">
+        <span class="glyphicon glyphicon-copyright-mark"></span>
+        All Rights Reserved
+      </p>
+    </footer>
   </body>
 </html>
