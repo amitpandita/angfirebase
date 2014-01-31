@@ -1,6 +1,8 @@
 angular.module("angfire", ["firebase","ui.bootstrap"]).controller(
   "Angfire",["$rootScope","$scope","$firebase", "$modal","$log" ,function($rootScope,$scope, $firebase,$modal, $log)  {
       var ref= new Firebase("https://angfirebase.firebaseio.com/");
+       //ref.child('users').set({user_id: 'wilma', text: 'Hello'});
+       //ref.child('comments').set({user_id: 'fred', text: 'How are you?'});
        $rootScope.fl = 0;
        $rootScope.authClient = new FirebaseSimpleLogin(ref, function(error, user) {
         if (error) {
@@ -30,18 +32,23 @@ angular.module("angfire", ["firebase","ui.bootstrap"]).controller(
         $rootScope.fl = 2;
         $rootScope.authClient.logout();
       }
-      $scope.comments= $firebase(ref);
+      
+      $scope.comments= $firebase(ref.child('comments'));
       //$scope.username = "User" + Math.floor(Math.random() * 101)
       $scope.username = $rootScope.authClient.user;
+      console.log($scope.comments);
+
 
       $scope.addComment = function(e){
         if (e.keyCode != 13) return;
         $scope.comments.$add({
            from: $rootScope.user.name,
            body: $scope.newComment,
-           fid: $rootScope.user.id
+           fid: $rootScope.user.id,
+           timestamp: Firebase.ServerValue.TIMESTAMP
       });
       $scope.newComment= "";  
+      debugger;
       console.log("Comments by the user" + $rootScope.user.name);
      }
      
@@ -76,6 +83,7 @@ angular.module("angfire", ["firebase","ui.bootstrap"]).controller(
   $scope.angfireLogin = function(lgin){
         $rootScope.authClient.login(lgin);
         $modalInstance.close();
+        
       };
 
 };

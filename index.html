@@ -106,13 +106,13 @@
             <!-- start: video comments -->
             <div class="row">
               <div class="col-sm-12">
-                <div class="comments" ng-repeat="comment in comments | filter: filter | orderBy:sort:reverse " class="comment-outer">
+                <div class="comments" ng-repeat="comment in comments |orderByPriority | orderBy:'-timestamp' " class="comment-outer">
                   <div class="user-img">
                     <img src="https://graph.facebook.com/{{comment.fid}}/picture?type=small"/>
                   </div>
                   <div class="user-comment">
                     <div class="comment-from">{{comment.from}}</div>
-                    <div class="comment-body">{{comment.body}}</div>
+                    <div class="comment-body">{{comment.body}} <i style="color:#AAA;"> - {{ comment.timestamp | date:'yyyy-MM-dd HH:mm:ss Z'}}</i></div>
                   </div>
                 </div>
               </div>
