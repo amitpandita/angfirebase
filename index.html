@@ -32,14 +32,14 @@
     <!--************Dialog Box code******************* -->
     <script type="text/ng-template" id="myModalContent.html">
           <div class="modal-body">
-            <a  href="#" ng-click="angfireLogin('facebook')"> <img class="fb-image" src="fblogin.png" /> </a>    
+            <a  href="#" ng-click="angfireLogin('facebook')"> <img class="fb-image" src="images/fblogin.png" /> </a>    
             
             </div>
-        <div class="modal-footer">
+          <div class="modal-footer">
             <!-- <button class="btn btn-primary" ng-click="ok()">OK</button> -->
             <button class="btn btn-warning" ng-click="cancel()">Skip</button>
-        </div>
-    </script>
+          </div>
+           </script>
 
     <!--************** Dialog Box code ends***************** -->
 
@@ -49,6 +49,8 @@
         <span class="glyphicon glyphicon-tower"></span>
         KORO
       </div>
+
+
       <div class="dropdown setting-top">
         <a data-toggle="dropdown" href="#"><span class="glyphicon glyphicon-cog"></span></a>
         <ul class="dropdown-menu pull-right" role="menu">
@@ -59,6 +61,17 @@
         </ul>
       </div>
       <div class="user-name" ng-bind="user.name"></div>
+      
+      <form class="navbar-form navbar-left search-box-top" role="search">
+        <div class="form-group form-group-sm">
+          <input type="text" class="form-control" placeholder="Search">
+        </div>
+        <button type="submit" class="btn btn-default btn-sm">Search</button>
+      </form>
+      <div class="upload">
+        <button class="btn btn-default btn-sm" ng-click="uploadVid()">Upload</button>
+      </div>
+
     </header>
     <section>
       <div class="container">
@@ -67,7 +80,7 @@
             <!-- start: video header -->
             <div class="row">
               <div class="col-sm-12 video-head">
-                <h2 class="video-name">XYZ Video</h2>
+                <h2 class="video-name">Summer Of 69 live</h2>
                 <div class="rating">
                   <div class="up"><span class="glyphicon glyphicon-thumbs-up"></span>30</div>
                   <div class="down"><span class="glyphicon glyphicon-thumbs-down"></span>12</div>
@@ -94,10 +107,10 @@
                   <div class="video-option">
                     <div class="up"><span class="glyphicon glyphicon-thumbs-up"></span></div>
                     <div class="down"><span class="glyphicon glyphicon-thumbs-down"></span></div>
-                    <div class="button">
+                    <!-- <div class="button">
                       <button class="btn btn-info">Submit</button>
                       <button class="btn btn-default">Cancel</button>
-                    </div>
+                    </div> -->
                   </div>
                 </div>
               </div>
@@ -121,7 +134,14 @@
           </div>
           <!-- start: video side bar -->
           <div class="side-content">
+            <div class="row">
+              <div class="col-sm-4">
+                <div class="side-videos" ng-repeat="vids in videos">
 
+                </div>
+
+              </div>
+            </div>
           </div>
           <!-- end: video side bar -->
         </div>

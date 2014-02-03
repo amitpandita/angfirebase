@@ -32,7 +32,8 @@ angular.module("angfire", ["firebase","ui.bootstrap"]).controller(
         $rootScope.fl = 2;
         $rootScope.authClient.logout();
       }
-      
+      /*------ Starts Function for Comments on each video ---------*/
+
       $scope.comments= $firebase(ref.child('comments'));
       //$scope.username = "User" + Math.floor(Math.random() * 101)
       $scope.username = $rootScope.authClient.user;
@@ -48,15 +49,36 @@ angular.module("angfire", ["firebase","ui.bootstrap"]).controller(
            timestamp: Firebase.ServerValue.TIMESTAMP
       });
       $scope.newComment= "";  
-      debugger;
       console.log("Comments by the user" + $rootScope.user.name);
      }
+
+     /*------ Ends Function for Comments on each video ---------*/ 
+
+
+     /*------ Starts Function for Side Bar videos ---------*/
+       $scope.videos= $firebase(ref.child('videos'));
+
+        // $scope.videos.$add(
+          
+        //   vidname:  
+        //   vid: 
+        //   source: 
+        //   like:
+        //   dislike:
+        //   url:
+
+
+        //   );
+
+     /*------ Ends Function for Side Bar videos ---------*/
+
      
    
     $scope.open = function () {
     var modalInstance = $modal.open({
       templateUrl: 'myModalContent.html',
       controller: ModalInstanceCtrl,
+      windowClass: 'facebook-box',
       resolve: {
         items: function () {
           return $scope.items;

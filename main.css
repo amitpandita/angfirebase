@@ -15,12 +15,6 @@ body {
   width: 6em
 }
 
-.modal-body{
- width: 180px;
- height: 180px;
-
-}
-
 .fb-image{
  width: 180px;
  height: 120px;  
@@ -62,6 +56,23 @@ body {
   text-align: center;
   font-size: 12px;
   color: #666;
+}
+
+.upload {
+  padding: 0px;
+  margin-top: 10px;
+
+}
+
+form.search-box-top input[type=text] {
+
+  width: 600px;
+}
+
+form.search-box-top {
+  
+ margin-left: 70px;
+
 }
 .container {
   padding-top: 50px;
@@ -151,8 +162,16 @@ body {
   .user-comment  .comment-body {
      margin: 5px;
   }
-
-
+.facebook-box .modal-dialog {
+  width: 350px;
+}
+.facebook-box .modal-footer {
+  padding: 9px 20px 12px;
+}
+.facebook-box .modal-body {
+  padding: 0px;
+  height: 80px;
+}
 
 
 @media(max-width:767px){
